@@ -15,7 +15,7 @@ function BannersPage() {
 
   const navigate = useNavigate();
   const [listaBanners, setListaBanners] = useState([]);
-  const [index, setIndex] = useState(3);
+  const [index, setIndex] = useState(0);
   const [loading, setLoading] = useState(true);
   const selectedBanner = listaBanners[index];
   const isFirst = index === 0;
@@ -23,7 +23,7 @@ function BannersPage() {
 
   const getBanners = async () => {
     const result = await getAllBanners();
-    setListaBanners(result.data);
+    setListaBanners(result.data.filter((banner) => !banner.nome.includes("UNTER")));
     setLoading(false);
   };
 
