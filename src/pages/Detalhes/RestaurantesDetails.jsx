@@ -1,4 +1,4 @@
-import { Container, Typography, CircularProgress, makeStyles, Box } from "@material-ui/core";
+import { Container, Typography, CircularProgress, makeStyles, Box, Card, CardActionArea, CardContent, CardMedia } from "@material-ui/core";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -9,8 +9,8 @@ import "./style.css";
 
 const useStyles = makeStyles((theme) => ({
   cardapioTitle: {
-      fontWeight: 'bold',
-      margin: 16
+    fontWeight: 'bold',
+    margin: 16
   },
   root: {
     display: 'flex',
@@ -77,17 +77,24 @@ function RestaurantesDetails() {
       setValorEntrega(response.data.valorEntrega);
       setLoading(false);
     })
-    axios.get(`https://itc-fvg-default-rtdb.firebaseio.com/detalhes/${id}.json`).then(data => {setCardapio(data.data.cardapio); console.log(data.data.cardapio);})
+    axios.get(`https://itc-fvg-default-rtdb.firebaseio.com/detalhes/${id}.json`).then(data => { setCardapio(data.data.cardapio); console.log(data.data.cardapio); })
   }, []);
 
   return (
     <Container className="restaurantes">
-      <Typography variant="h5" align="center" color="primary" className="title">
-        {nome}
-      </Typography>
-      <Typography variant="h5" align="center" color="primary" className="title">
-        {nome}
-      </Typography>
+      <Card className="card">
+        <CardActionArea className="card-action">
+          <CardContent className="card-content">
+            <Typography variant="h5" className="title">{nome}</Typography>
+            <Typography variant="h5" className="title">{distancia}</Typography>
+            <Typography variant="h5" className="title">{nota}</Typography>
+            <Typography variant="h5" className="title">{tempoMedio} min - {valorEntrega}</Typography>
+            <Typography variant="h5" className="title">{descricao}</Typography>
+            <Typography variant="h5" className="title">{endereco}</Typography>
+            <CardMedia><img src={imagem} /></CardMedia>
+          </CardContent>
+        </CardActionArea>
+      </Card>
 
       {cardapio && cardapio.map((item, i) => (
         <Box key={i}>

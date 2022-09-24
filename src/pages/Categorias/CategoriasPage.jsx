@@ -44,16 +44,19 @@ function CategoriasPage() {
 							onClick={() => navigate(`/restaurantes/${categoria.id}`)}
 						>
 							<img
+
 								className="imgCategory"
 								src={categoria.image.concat('.png')}
 								alt={categoria.name}
 							/>
+
 								<div className="containerLegenda">
 									<div>
 										<Typography className="textNames">{categoria.name}</Typography>
 										<Typography className="textTotal">({categoria.total})</Typography>
 									</div>
 								</div>
+
 						</div>
 					</Grid>
 				))}
