@@ -68,7 +68,7 @@ export default function CardapioPage() {
     <div>
 
       {cardapio && cardapio.map((item, i) => (
-        <Cardapio key={i} cardapio={cardapio}></Cardapio>
+        <Cardapio key={i} cardapio={item}></Cardapio>
       ))}
       
     </div>

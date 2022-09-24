@@ -1,4 +1,5 @@
-import { Container, Typography, CircularProgress, makeStyles } from "@material-ui/core";
+import { Container, Typography, CircularProgress, makeStyles, Box } from "@material-ui/core";
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Cardapio from "../../components/Cardapio";
@@ -49,6 +50,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function RestaurantesDetails() {
+  const classes = useStyles();
+
   const [nome, setNome] = useState([]);
   const [descricao, setDescricao] = useState([]);
   const [distancia, setDistancia] = useState([]);
@@ -64,17 +67,17 @@ function RestaurantesDetails() {
 
   useEffect(() => {
     getCardapio(id).then((response) => {
-      console.log(response);
-      setNome(response.nome)
-      setDescricao(response.descricao);
-      setDistancia(response.distancia);
-      setEndereco(response.endereco);
-      setImagem(response.imagem);
-      setNota(response.nota);
-      setTempoMedio(response.tempoMedio);
-      setValorEntrega(response.valorEntrega);
+      setNome(response.data.nome)
+      setDescricao(response.data.descricao);
+      setDistancia(response.data.distancia);
+      setEndereco(response.data.endereco);
+      setImagem(response.data.imagem);
+      setNota(response.data.nota);
+      setTempoMedio(response.data.tempoMedio);
+      setValorEntrega(response.data.valorEntrega);
       setLoading(false);
     })
+    axios.get(`https://itc-fvg-default-rtdb.firebaseio.com/detalhes/${id}.json`).then(data => {setCardapio(data.data.cardapio); console.log(data.data.cardapio);})
   }, []);
 
   return (
@@ -87,7 +90,12 @@ function RestaurantesDetails() {
       </Typography>
 
       {cardapio && cardapio.map((item, i) => (
-        <Cardapio key={i} cardapio={item}></Cardapio>
+        <Box key={i}>
+          <Typography variant="body1" className={`${classes.cardapioTitle}`}>
+            {item.categoria}
+          </Typography>
+          <Cardapio cardapio={item}></Cardapio>
+        </Box>
       ))}
 
     </Container>
