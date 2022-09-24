@@ -15,3 +15,26 @@
     display: flex;
     flex-direction: column;
 }
+
+.conteudo .MuiTypography-h4 {
+    color: #828282;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.conteudo .MuiTypography-h5 {
+    color: #828282;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.conteudo .MuiTypography-h6 {
+    color: #ED6E27;
+    font-size: 14px;
+}
+
+.div-rating {
+    display: flex;
+    align-items: center;
+}
+
