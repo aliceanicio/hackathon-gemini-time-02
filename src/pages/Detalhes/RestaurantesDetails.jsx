@@ -53,6 +53,9 @@ const useStyles = makeStyles((theme) => ({
   input: {
     marginTop: 20,
     marginBottom: 20
+  },
+  endereco: {
+    fontWeight: 800
   }
 }));
 
@@ -70,6 +73,7 @@ function RestaurantesDetails() {
   const [loading, setLoading] = useState(true);
   const [cardapio, setCardapio] = useState([]);
   const [filteredCardapio, setFilteredCardapio] = useState([])
+  const [restaurante, setRestaurante] = useState();
 
   const [search, setSearch] = useState('');
 
@@ -78,6 +82,8 @@ function RestaurantesDetails() {
 
   useEffect(() => {
     getCardapio(id).then((response) => {
+      console.log(response.data);
+      setRestaurante(response.data);
       setNome(response.data.nome)
       setDescricao(response.data.descricao);
       setDistancia(response.data.distancia);
@@ -111,7 +117,13 @@ function RestaurantesDetails() {
   return (
 
     <Container className="restaurantes">
-
+      {restaurante &&
+        <div>
+          <RestauranteCard restaurante={restaurante}/>
+          <Typography class="MuiTypography-body2 MuiTypography-colorTextSecondary" className="title">{descricao}</Typography>
+          <Typography class="MuiTypography-body2 MuiTypography-colorTextSecondary" className={classes.endereco}>{endereco}</Typography>
+        </div>
+      }
 
       <TextField
         InputProps={{

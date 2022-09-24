@@ -25,7 +25,7 @@ export default function RestauranteCard(props) {
                     <Typography gutterBottom variant="h5" component="h2">
                         {props.restaurante.distancia} Km
                     </Typography>
-                    <Box display="flex" alignItems="center" className="div-rating">
+                    <Box display="flex" className="div-rating">
                         <StarIcon color="primary" style={{ fontSize: 14 }} />
                         <Typography gutterBottom variant="h6" component="h2">
                             {props.restaurante.nota}
