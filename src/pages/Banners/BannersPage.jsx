@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import "./style.css";
 
 function BannersPage() {
+  
   const navigate = useNavigate();
   const [listaBanners, setListaBanners] = useState([]);
   const [index, setIndex] = useState(0);
