@@ -1,3 +1,3 @@
-import RestauranteDetails from "./RestauranteDetails";
+import RestaurantesDetails from "./RestaurantesDetails";
 
-export default RestauranteDetails;
+export default RestaurantesDetails;
