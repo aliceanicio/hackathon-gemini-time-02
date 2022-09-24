@@ -5,6 +5,7 @@ import BannersPage from "./pages/Banners";
 import CategoriasPage from "./pages/Categorias";
 import RestaurantesDetails from "./pages/Detalhes";
 import RestaurantesPage from "./pages/Restaurantes";
+import LoginContextProvider from './contexts/LoginContext';
 
 const themeCustom = createTheme({
   palette: {
@@ -25,15 +26,17 @@ const themeCustom = createTheme({
 function App() {
   return (
     <BrowserRouter>
-      <ThemeProvider theme={themeCustom}>
-        <Header />
-        <Routes>
-          <Route path="/" exact element={<BannersPage />} />
-          <Route path="/categorias" exact element={<CategoriasPage />} />
-          <Route path="/restaurantes/:id" exact element={<RestaurantesPage />} />
-          <Route path="restaurantes/detalhes/:id" exact element={<RestaurantesDetails />} />
-        </Routes>
-      </ThemeProvider>
+      <LoginContextProvider>
+        <ThemeProvider theme={themeCustom}>
+          <Header />
+          <Routes>
+            <Route path="/" exact element={<BannersPage />} />
+            <Route path="/categorias" exact element={<CategoriasPage />} />
+            <Route path="/restaurantes/:id" exact element={<RestaurantesPage />} />
+            <Route path="restaurantes/detalhes/:id" exact element={<RestaurantesDetails />} />
+          </Routes>
+        </ThemeProvider>
+      </LoginContextProvider>
     </BrowserRouter>
   );
 }
