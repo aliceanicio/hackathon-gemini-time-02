@@ -1,4 +1,4 @@
-import { AppBar, IconButton, Menu, MenuItem, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, Avatar, IconButton, Menu, MenuItem, Toolbar, Typography } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import { useState } from "react";
@@ -55,6 +55,8 @@ function Header() {
           <IconButton color="inherit" onClick={handleClick} edge="start">
             <AccountCircle fontSize="large" />
           </IconButton>
+          <Avatar>{'a'[0].toUpperCase()}</Avatar>
+
         </Toolbar>
       </AppBar>
     </div>
