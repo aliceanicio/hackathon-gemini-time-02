@@ -35,8 +35,20 @@ function RestaurantesDetails() {
       <Typography variant="h5" align="center" color="primary" className="title">
         {nome}
       </Typography>
+      <Typography variant="p" align="center" color="primary" className="title">
+        {distancia}
+      </Typography>
       <Typography variant="h5" align="center" color="primary" className="title">
-        {nome}
+        {nota}
+      </Typography>
+      <Typography variant="p" align="center" color="primary" className="title">
+        {tempoMedio} – {valorEntrega}
+      </Typography>
+      <Typography variant="p" align="center" color="primary" className="title">
+        {descricao}
+      </Typography>
+      <Typography variant="h5" align="center" color="primary" className="title">
+        {endereco}
       </Typography>
 
 
