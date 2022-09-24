@@ -10,7 +10,45 @@ import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
 
 const useStyles = makeStyles((theme) => ({
- 
+  cardapioTitle: {
+      fontWeight: 'bold',
+      margin: 16
+  },
+  root: {
+    display: 'flex',
+    width: 330
+  },
+  details: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  content: {
+    flex: '1 0 auto',
+    width: 200
+  },
+  cover: {
+    width: 89,
+    height: 89
+  },
+  controls: {
+    display: 'flex',
+    alignItems: 'center',
+    paddingLeft: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
+  },
+  playIcon: {
+    height: 38,
+    width: 38,
+  },
+  productTitle: {
+    fontSize: 16
+  },
+  productDescription: {
+    fontSize: 12
+  },
+  price: {
+    fontWeight: 'bold'
+  }
 }));
 
 
@@ -39,7 +77,30 @@ export default function CardapioPage() {
             {item.categoria}
           </Typography>
           <Grid container spacing={3} justifyContent="center">
-            
+            {item.itens.map((produto,i) => (
+              <Grid item key={i}>
+                <Card className={classes.root}>
+                    <CardMedia
+                      className={classes.cover}
+                      image={produto.imagem}
+                    />
+                  <div className={classes.details}>
+                    <CardContent className={classes.content}>
+                      <Typography variant="h6" className={classes.productTitle}>
+                        {produto.nome}
+                      </Typography>
+                      <Typography variant="subtitle1" color="textSecondary" className={classes.productDescription}> 
+                        {produto.descricao}
+                      </Typography>
+                      <Typography variant="body2" color="textSecondary" align='right' className={classes.price}>
+                        {formatter.format(produto.valor)}
+                      </Typography>
+                    </CardContent>
+                  </div>
+                  
+                </Card>
+              </Grid>
+            ))}
           </Grid>
 
         </Container>
