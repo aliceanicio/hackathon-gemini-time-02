@@ -1,3 +1,8 @@
 .restaurantes .sub-header span {
   color: #DEDDDD;
 }
+
+.restaurantes .sub-header {
+  color: #DEDDDD;
+  padding: 20px;
+}
