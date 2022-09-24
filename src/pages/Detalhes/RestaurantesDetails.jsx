@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Cardapio from "../../components/Cardapio";
+import RestauranteCard from "../../components/RestauranteCard/RestauranteCard";
 import { getCardapio } from "../../services/cardapio.service";
 import { getRestaurantes } from "../../services/restaurantes.service";
 import "./style.css";
@@ -81,20 +82,8 @@ function RestaurantesDetails() {
   }, []);
 
   return (
+
     <Container className="restaurantes">
-      <Card className="card">
-        <CardActionArea className="card-action">
-          <CardContent className="card-content">
-            <Typography variant="h5" className="title">{nome}</Typography>
-            <Typography variant="h5" className="title">{distancia}</Typography>
-            <Typography variant="h5" className="title">{nota}</Typography>
-            <Typography variant="h5" className="title">{tempoMedio} min - {valorEntrega}</Typography>
-            <Typography variant="h5" className="title">{descricao}</Typography>
-            <Typography variant="h5" className="title">{endereco}</Typography>
-            <CardMedia><img src={imagem} /></CardMedia>
-          </CardContent>
-        </CardActionArea>
-      </Card>
 
       {cardapio && cardapio.map((item, i) => (
         <Box key={i}>

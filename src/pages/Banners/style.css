@@ -2,6 +2,10 @@
   height: calc(100vh - 98px);
 }
 
+.full-height:nth-child(1) {
+  display: none;
+}
+
 .full-height .MuiContainer-root {
   padding: 0 27px;
 }
