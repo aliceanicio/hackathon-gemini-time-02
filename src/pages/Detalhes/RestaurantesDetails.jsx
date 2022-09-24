@@ -82,17 +82,19 @@ function RestaurantesDetails() {
 
   return (
     <Container className="restaurantes">
-      <div className="div-rest">
-        <Card className="card">
-          <CardActionArea className="card-action">
-            <CardContent className="card-content">
-              <Typography variant="h5" className="title">{nome}</Typography>
-              <CardMedia><img src={imagem} />
-              </CardMedia>
-            </CardContent>
-          </CardActionArea>
-        </Card>
-      </div>
+      <Card className="card">
+        <CardActionArea className="card-action">
+          <CardContent className="card-content">
+            <Typography variant="h5" className="title">{nome}</Typography>
+            <Typography variant="h5" className="title">{distancia}</Typography>
+            <Typography variant="h5" className="title">{nota}</Typography>
+            <Typography variant="h5" className="title">{tempoMedio} min - {valorEntrega}</Typography>
+            <Typography variant="h5" className="title">{descricao}</Typography>
+            <Typography variant="h5" className="title">{endereco}</Typography>
+            <CardMedia><img src={imagem} /></CardMedia>
+          </CardContent>
+        </CardActionArea>
+      </Card>
 
       {cardapio && cardapio.map((item, i) => (
         <Box key={i}>
