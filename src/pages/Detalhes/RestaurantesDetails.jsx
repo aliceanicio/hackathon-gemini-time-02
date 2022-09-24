@@ -6,6 +6,8 @@ import Cardapio from "../../components/Cardapio";
 import { getCardapio } from "../../services/cardapio.service";
 import { getRestaurantes } from "../../services/restaurantes.service";
 import "./style.css";
+import StarIcon from '@material-ui/icons/Star';
+
 
 const useStyles = makeStyles((theme) => ({
   cardapioTitle: {
@@ -86,8 +88,8 @@ function RestaurantesDetails() {
         <CardActionArea className="card-action">
           <CardContent className="card-content">
             <Typography variant="h5" className="title">{nome}</Typography>
-            <Typography variant="h5" className="title">{distancia}</Typography>
-            <Typography variant="h5" className="title">{nota}</Typography>
+            <Typography variant="h5" className="title">{distancia} km</Typography>
+            <Typography variant="h5" className="title"><StarIcon /> {nota}</Typography>
             <Typography variant="h5" className="title">{tempoMedio} min - {valorEntrega}</Typography>
             <Typography variant="h5" className="title">{descricao}</Typography>
             <Typography variant="h5" className="title">{endereco}</Typography>
