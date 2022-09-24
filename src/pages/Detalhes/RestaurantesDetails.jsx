@@ -1,4 +1,4 @@
-import { Container, Typography, CircularProgress, makeStyles, Box, Card, CardActionArea, CardContent, CardMedia } from "@material-ui/core";
+import { Container, Typography, CircularProgress, makeStyles, Box, TextField, InputAdornment } from "@material-ui/core";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -7,6 +7,8 @@ import RestauranteCard from "../../components/RestauranteCard/RestauranteCard";
 import { getCardapio } from "../../services/cardapio.service";
 import { getRestaurantes } from "../../services/restaurantes.service";
 import "./style.css";
+import SearchIcon from '@material-ui/icons/Search';
+import { ListAlt } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   cardapioTitle: {
@@ -63,6 +65,10 @@ function RestaurantesDetails() {
   const [valorEntrega, setValorEntrega] = useState([]);
   const [loading, setLoading] = useState(true);
   const [cardapio, setCardapio] = useState([]);
+  const [filteredCardapio, setFilteredCardapio] = useState([])
+
+  const [search, setSearch] = useState('');
+
   const { id } = useParams();
 
 
@@ -77,15 +83,48 @@ function RestaurantesDetails() {
       setTempoMedio(response.data.tempoMedio);
       setValorEntrega(response.data.valorEntrega);
       setLoading(false);
+      setCardapio(response.data.cardapio)
+      setFilteredCardapio(response.data.cardapio)
     })
-    axios.get(`https://itc-fvg-default-rtdb.firebaseio.com/detalhes/${id}.json`).then(data => { setCardapio(data.data.cardapio); console.log(data.data.cardapio); })
   }, []);
+
+  useEffect(() => {
+    let lista = []
+    if (search !== '') {
+      filteredCardapio.map((categoria) => {
+        categoria.itens = categoria.itens.filter(item => item.nome.toUpperCase().startsWith(search.toUpperCase()))
+        lista.push(categoria)
+      })
+      setFilteredCardapio(lista)
+    }
+    else {
+      getCardapio(id).then((response) => {
+        setFilteredCardapio(response.data.cardapio)
+      })
+    }
+  }, [search])
 
   return (
 
     <Container className="restaurantes">
 
-      {cardapio && cardapio.map((item, i) => (
+
+      <TextField
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <SearchIcon />
+            </InputAdornment>
+          ),
+        }}
+        className={classes.input}
+        onChange={(e) => setSearch(e.target.value)}
+        label="Buscar no cardápio"
+        variant='outlined'
+        fullWidth
+      />
+
+      {filteredCardapio && filteredCardapio.map((item, i) => (
         <Box key={i}>
           <Typography variant="body1" className={`${classes.cardapioTitle}`}>
             {item.categoria}
