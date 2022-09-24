@@ -49,6 +49,10 @@ const useStyles = makeStyles((theme) => ({
   },
   price: {
     fontWeight: 'bold'
+  },
+  input: {
+    marginTop: 20,
+    marginBottom: 20
   }
 }));
 
