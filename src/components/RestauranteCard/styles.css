@@ -1,0 +1,17 @@
+.restauranteCard .cardArea {
+    display: flex;
+    justify-content: space-between;
+    bottom: 20px;
+    padding: 20px;
+}
+
+.restauranteCard .imagem {
+    width: 30%;
+    display: flex;
+}
+
+.restauranteCard .conteudo {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}

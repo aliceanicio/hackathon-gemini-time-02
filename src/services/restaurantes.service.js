@@ -8,3 +8,5 @@ export async function getRestaurantes(id) {
     throw err;
   }
 };
+
+
