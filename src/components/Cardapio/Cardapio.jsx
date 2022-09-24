@@ -72,13 +72,10 @@ export default function CardapioPage({cardapio}) {
   return (
     <div>
 
-      {cardapio && cardapio.map((item, i) => (
-        <Container key={i}>
-          <Typography variant="body1" className={`${classes.cardapioTitle}`}>
-            {item.categoria}
-          </Typography>
+        <Container >
+          
           <Grid container spacing={3} justifyContent="center">
-            {item.itens.map((produto,i) => (
+            {cardapio.itens.map((produto,i) => (
               <Grid item key={i}>
                 <Card className={classes.root}>
                     <CardMedia
@@ -106,7 +103,6 @@ export default function CardapioPage({cardapio}) {
           </Grid>
 
         </Container>
-      ))}
       
     </div>
   )
