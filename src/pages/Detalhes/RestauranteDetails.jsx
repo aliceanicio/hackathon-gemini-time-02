@@ -60,13 +60,8 @@ export default function CardapioPage() {
 
   const {id} = useParams()
 
-  let formatter = new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL'
-})
-
   useEffect(() => {
-      axios.get(`https://itc-fvg-default-rtdb.firebaseio.com/detalhes/${id}.json`).then(data => {setCardapio(data.data.cardapio); console.log(data.data.cardapio)})
+      axios.get(`https://itc-fvg-default-rtdb.firebaseio.com/detalhes/${id}.json`).then(data => {setCardapio(data.data.cardapio)})
       }, []);
 
   return (
