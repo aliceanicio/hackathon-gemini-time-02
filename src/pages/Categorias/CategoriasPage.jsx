@@ -24,6 +24,7 @@ function CategoriasPage() {
 	useEffect(() => {
 		getCategorias();
 	}, []);
+	
 	return (
 		<Container className="categorias">
 			<Typography variant="h5" align="center" color="primary" className="title">
@@ -43,12 +44,16 @@ function CategoriasPage() {
 							onClick={() => navigate(`/restaurantes/${categoria.id}`)}
 						>
 							<img
-								src={categoria.imagem}
-								alt={categoria.nome}
 								className="imgCategory"
+								src={categoria.image.concat('.png')}
+								alt={categoria.name}
 							/>
-
-							<Typography className="textNames">{categoria.nome}</Typography>
+								<div className="containerLegenda">
+									<div>
+										<Typography className="textNames">{categoria.name}</Typography>
+										<Typography className="textTotal">({categoria.total})</Typography>
+									</div>
+								</div>
 						</div>
 					</Grid>
 				))}
