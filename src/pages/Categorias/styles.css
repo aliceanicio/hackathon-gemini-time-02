@@ -2,16 +2,11 @@
 	margin-top: 45px;
 }
 
-.categorias .textNames {
-	text-align: center;
-	font-size: 14px;
-}
 
 .categorias .imgCategory {
 	max-width: 350px;
 	border-top-left-radius: 15px;
 	border-top-right-radius: 15px;
-	margin-bottom: 4px;
 }
 
 .categorias .containerCategorias {
@@ -20,4 +15,34 @@
 	flex-direction: column;
 	margin: 10px 0 5px;
 	cursor: pointer;
+}
+
+.categorias .containerLegenda {
+	width: 91px;
+	height: 39px;
+	left: 37px;
+	top: 335px;
+
+	background: rgba(217, 217, 217, 0.21);
+	border-radius: 0px 0px 5px 5px;
+}
+
+.categorias .textNames {
+	font-family: 'Ubuntu';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 16px;
+	text-align: center;
+	color: #828282;
+}
+
+.categorias .textTotal {
+	font-family: 'Ubuntu';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 16px;
+	text-align: center;
+	color: #828282;
 }
