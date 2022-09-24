@@ -8,7 +8,6 @@ import CardMedia from '@material-ui/core/CardMedia';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
-import Cardapio from '../../components/Cardapio';
 
 const useStyles = makeStyles((theme) => ({
   cardapioTitle: {
@@ -53,8 +52,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function CardapioPage() {
-  const [cardapio, setCardapio] = useState([]);
+export default function CardapioPage({cardapio}) {
   const classes = useStyles();
   const theme = useTheme();
 
@@ -65,15 +63,44 @@ export default function CardapioPage() {
     currency: 'BRL'
 })
 
-  useEffect(() => {
-      axios.get(`https://itc-fvg-default-rtdb.firebaseio.com/detalhes/${id}.json`).then(data => {setCardapio(data.data.cardapio); console.log(data.data.cardapio)})
-      }, []);
+  
 
   return (
     <div>
 
       {cardapio && cardapio.map((item, i) => (
-        <Cardapio key={i} cardapio={cardapio}></Cardapio>
+        <Container key={i}>
+          <Typography variant="body1" className={classes.cardapioTitle}>
+            {item.categoria}
+          </Typography>
+          <Grid container spacing={3} justifyContent="center">
+            {item.itens.map((produto,i) => (
+              <Grid item key={i}>
+                <Card className={classes.root}>
+                    <CardMedia
+                      className={classes.cover}
+                      image={produto.imagem}
+                    />
+                  <div className={classes.details}>
+                    <CardContent className={classes.content}>
+                      <Typography variant="h6" className={classes.productTitle}>
+                        {produto.nome}
+                      </Typography>
+                      <Typography variant="subtitle1" color="textSecondary" className={classes.productDescription}> 
+                        {produto.descricao}
+                      </Typography>
+                      <Typography variant="body2" color="textSecondary" align='right' className={classes.price}>
+                        {formatter.format(produto.valor)}
+                      </Typography>
+                    </CardContent>
+                  </div>
+                  
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+
+        </Container>
       ))}
       
     </div>
