@@ -15,16 +15,31 @@
 
 .full-height .MuiTypography-h5 {
   width: 50%;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 41px;
 }
 
 .full-height .subtitle {
   padding-bottom: 14px;
-  min-height: 62px;
-  max-width: 20px;
+  min-height: 31px;
+  margin-bottom: 14px;
+  max-width: 330px;
+}
+
+.full-height .MuiTypography-body1 {
+  font-weight: 400;
+  font-size: 16px;
 }
 
 .full-height .descricao {
-  min-height: 140px;
+  min-height: 27px;
+  max-width: 330px;
+}
+
+.full-height .MuiTypography-body2 {
+  font-size: 10px;
+  line-height: 12px;
 }
 
 .full-height .actions {
@@ -36,6 +51,9 @@
 .full-height .actions .MuiButton-contained {
   width: calc(100vw - 200px);
   font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  text-transform: none;
 }
 
 .full-height .actions .MuiFab-label {

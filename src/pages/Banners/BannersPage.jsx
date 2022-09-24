@@ -44,7 +44,7 @@ function BannersPage() {
   }
 
   return (
-    <div className="full-height" style={{backgroundColor: selectedBanner['background-color']}}>
+    <div className="full-height" align="center" style={{ backgroundColor: selectedBanner['background-color'] }}>
       <Container>
         <div className="title-home">
           <Typography
@@ -63,6 +63,7 @@ function BannersPage() {
 
         <Typography variant="body2" align="center" className="descricao">
           {selectedBanner.descriçao}
+          Cupom PRIMEIRACOMPRA: promoção válida na primeira compra bem-sucedida de novos usuários. Válido apenas para compras pelo site e somente uma vez por CPF. Compra mínima de 50 reais para utilização do cupom.
         </Typography>
 
         <div className="actions">
@@ -74,7 +75,7 @@ function BannersPage() {
             color="primary"
             onClick={() => navigate("/categorias")}
           >
-            Faça seu Pedido
+            Faça seu pedido
           </Button>
 
           <Fab color="primary" onClick={() => mudarBanner(1)} disabled={isLast}>
