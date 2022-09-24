@@ -1,4 +1,4 @@
-import { Card, CardContent, Container, Grid, IconButton, makeStyles, Typography, useTheme } from '@material-ui/core';
+import { Card, CardContent, Container, Divider, Grid, IconButton, makeStyles, Typography, useTheme } from '@material-ui/core';
 import { ImportExport } from '@material-ui/icons';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
@@ -8,6 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
+import './Cardapio.css'
 
 const useStyles = makeStyles((theme) => ({
   cardapioTitle: {
@@ -16,7 +17,9 @@ const useStyles = makeStyles((theme) => ({
   },
   root: {
     display: 'flex',
-    width: 330
+    width: 330,
+    boxShadow: 'none',
+    backgroundColor: "#FBFBFB"
   },
   details: {
     display: 'flex',
@@ -28,7 +31,8 @@ const useStyles = makeStyles((theme) => ({
   },
   cover: {
     width: 89,
-    height: 89
+    height: 89,
+    marginLeft: 5
   },
   controls: {
     display: 'flex',
@@ -41,7 +45,8 @@ const useStyles = makeStyles((theme) => ({
     width: 38,
   },
   productTitle: {
-    fontSize: 16
+    fontSize: 16,
+    fontWeight: 'bold'
   },
   productDescription: {
     fontSize: 12
@@ -54,7 +59,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CardapioPage({cardapio}) {
   const classes = useStyles();
-  const theme = useTheme();
 
   const {id} = useParams()
 
@@ -70,7 +74,7 @@ export default function CardapioPage({cardapio}) {
 
       {cardapio && cardapio.map((item, i) => (
         <Container key={i}>
-          <Typography variant="body1" className={classes.cardapioTitle}>
+          <Typography variant="body1" className={`${classes.cardapioTitle}`}>
             {item.categoria}
           </Typography>
           <Grid container spacing={3} justifyContent="center">
@@ -82,7 +86,7 @@ export default function CardapioPage({cardapio}) {
                       image={produto.imagem}
                     />
                   <div className={classes.details}>
-                    <CardContent className={classes.content}>
+                    <CardContent className={`${classes.content} contentCard`}>
                       <Typography variant="h6" className={classes.productTitle}>
                         {produto.nome}
                       </Typography>
@@ -96,6 +100,7 @@ export default function CardapioPage({cardapio}) {
                   </div>
                   
                 </Card>
+                <Divider/>
               </Grid>
             ))}
           </Grid>
